@@ -14,7 +14,7 @@ const UserSchema = new Schema(
         type: String,
         Unique: true,
         Required: true,
-        match: //find email validation thru mongoose
+        match: [/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/]
     },
     thoughts: [{
     // _id values referencing the thought model
@@ -25,9 +25,16 @@ const UserSchema = new Schema(
   },
   {
     toJSON: {
-      getters: true
-    }
+    virtuals: true,
+    },
+    id: false 
   }
 );
 
-UserSchema.virtual("friendCount")
+CommentSchema.virtual('friendCount').get(function() {
+    return this.friends.length;
+  });
+
+const User = model('User', UserSchema);
+
+module.exports = User;
