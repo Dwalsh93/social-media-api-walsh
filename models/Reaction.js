@@ -7,12 +7,15 @@ const ReactionSchema = new Schema(
         reactionId: {
             //Use Mongoose's ObjectId data type
             //Default value is set to a new ObjectId
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId(),
 
         },
         reactionBody: {
             type: String,
             Required: True,
             // 280 character maximum
+            maxlength: 280,
         },
         username: [{
             type: String,
