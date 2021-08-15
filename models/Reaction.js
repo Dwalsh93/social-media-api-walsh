@@ -13,13 +13,13 @@ const ReactionSchema = new Schema(
         },
         reactionBody: {
             type: String,
-            Required: True,
+            required: true,
             // 280 character maximum
             maxlength: 280,
         },
         username: [{
             type: String,
-            Required: true
+            required: true
         }],
         createdAt: [{
             type: Date,
@@ -35,10 +35,10 @@ const ReactionSchema = new Schema(
     }
 );
 
-ReactionSchema.virtual('ThoughtCount').get(function () {
-    return this.Thoughts.length;
-});
+// ReactionSchema.virtual('ThoughtCount').get(function () {
+//     return this.Thoughts.length;
+// });
 
-const Reaction = model('Reaction', ReactionSchema);
+// const Reaction = model('Reaction', ReactionSchema);
 
-module.exports = Reaction;
+module.exports = ReactionSchema;

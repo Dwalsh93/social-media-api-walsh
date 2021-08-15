@@ -6,15 +6,15 @@ const UserSchema = new Schema(
         // set custom id to avoid confusion with parent comment _id
         username: {
             type: String,
-            Unique: true,
-            Required: true,
+            unique: true,
+            required: true,
             trim: true
         },
         email: {
             type: String,
-            Unique: true,
-            Required: true,
-            match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/]
+            unique: true,
+            required: true,
+            match: [/.+@.+\..+/]
         },
         thoughts: [{
             // _id values referencing the thought model
